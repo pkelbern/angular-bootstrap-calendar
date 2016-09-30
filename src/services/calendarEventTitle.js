@@ -7,70 +7,28 @@ angular
   .factory('calendarEventTitle', function(calendarDateFilter, calendarTruncateEventTitleFilter) {
 
     function yearView(event) {
-      return event.title + ' (' + calendarDateFilter(event.startsAt, 'datetime', true) + ')';
-    }
+	        return event.yearViewRender ? event.yearViewRenderRender(event) : event.title + ' (' + calendarDateFilter(event.startsAt, 'datetime', true) + ')';
+	    }
 
-    function monthView(event) {
-      return event.title + ' (' + calendarDateFilter(event.startsAt, 'time', true) + ')';
-    }
+	    function monthView(event) {
+	        return event.monthViewRender ? event.monthViewRender(event) : event.title + ' (' + calendarDateFilter(event.startsAt, 'time', true) + ')';
+	    }
 
-    function monthViewTooltip(event) {
-      return 'use strict';
+	    function monthViewTooltip(event) {
+	        return event.monthViewTooltipRender ? event.monthViewTooltipRender(event) : (calendarDateFilter(event.startsAt, 'time', true) + ' - ' + event.title);
+	    }
 
-var angular = require('angular');
+	    function weekView(event) {
+	      return event.title;
+	    }
 
-angular
-  .module('mwl.calendar')
-  .factory('calendarEventTitle', function(calendarDateFilter, calendarTruncateEventTitleFilter) {
+	    function weekViewTooltip(event) {
+	      return event.title;
+	    }
 
-    function yearView(event) {
-      return event.yearViewRender? event.yearViewRender(event) : (event.title + ' (' + calendarDateFilter(event.startsAt, 'datetime', true) + ')');
-    }
-
-    function monthView(event) {
-      return event.monthViewRender ? event.monthViewRender(event) : (event.title + ' (' + calendarDateFilter(event.startsAt, 'time', true) + ')' );
-    }
-
-    function monthViewTooltip(event) {
-      return event.monthViewTooltipRender ? event.monthViewTooltipRender(event) : (calendarDateFilter(event.startsAt, 'time', true) + ' - ' + event.title);
-    }
-
-    function weekView(event) {
-      return event.title;
-    }
-
-    function weekViewTooltip(event) {
-      return event.title;
-    }
-
-    function dayView(event) {
-      return event.allDay ? event.title : calendarTruncateEventTitleFilter(event.title, 20, event.height);
-    }
-
-    return {
-      yearView: yearView,
-      monthView: monthView,
-      monthViewTooltip: monthViewTooltip,
-      weekView: weekView,
-      weekViewTooltip: weekViewTooltip,
-      dayView: dayView
-    };
-
-  });
-;
-    }
-
-    function weekView(event) {
-      return event.title;
-    }
-
-    function weekViewTooltip(event) {
-      return event.title;
-    }
-
-    function dayView(event) {
-      return event.allDay ? event.title : calendarTruncateEventTitleFilter(event.title, 20, event.height);
-    }
+	    function dayView(event) {
+	      return event.allDay ? event.title : calendarTruncateEventTitleFilter(event.title, 20, event.height);
+	    }
 
     return {
       yearView: yearView,
