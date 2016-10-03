@@ -7,15 +7,21 @@ angular
   .factory('calendarEventTitle', function(calendarDateFilter, calendarTruncateEventTitleFilter) {
 
     function yearView(event) {
-	        return event.yearViewRender ? event.yearViewRenderRender(event) : event.title + ' (' + calendarDateFilter(event.startsAt, 'datetime', true) + ')';
+	        return event.yearViewRender ? 
+            event.yearViewRenderRender(event) : 
+            event.title + ' (' + calendarDateFilter(event.startsAt, 'datetime', true) + ')';
 	    }
 
 	    function monthView(event) {
-	        return event.monthViewRender ? event.monthViewRender(event) : event.title + ' (' + calendarDateFilter(event.startsAt, 'time', true) + ')';
+	        return event.monthViewRender ? 
+            event.monthViewRender(event) : 
+            event.title + ' (' + calendarDateFilter(event.startsAt, 'time', true) + ')';
 	    }
 
 	    function monthViewTooltip(event) {
-	        return event.monthViewTooltipRender ? event.monthViewTooltipRender(event) : (calendarDateFilter(event.startsAt, 'time', true) + ' - ' + event.title);
+	        return event.monthViewTooltipRender ? 
+            event.monthViewTooltipRender(event) : 
+            (calendarDateFilter(event.startsAt, 'time', true) + ' - ' + event.title);
 	    }
 
 	    function weekView(event) {
