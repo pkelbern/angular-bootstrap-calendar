@@ -8,8 +8,8 @@ angular
 
     function yearView(event) {
           return event.yearViewRender
-		  ? event.yearViewRenderRender(event)
-		  : event.title + ' (' + calendarDateFilter(event.startsAt, 'datetime', true) + ')';
+            ? event.yearViewRenderRender(event)
+            : event.title + ' (' + calendarDateFilter(event.startsAt, 'datetime', true) + ')';
       }
 
       function monthView(event) {
